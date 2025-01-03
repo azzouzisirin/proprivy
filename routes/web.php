@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/manage-users', [UserController::class, 'manageUsers'])->can('manageUsers');
+    Route::get('/reminders', [ReminderController::class, 'index'])->name('reminders.index');
 
 });
 Route::middleware(['auth', 'can:manage-users'])->post('/manage-users', [UserController::class, 'manageUsers']);
