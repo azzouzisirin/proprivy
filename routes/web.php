@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\TermsController;
 use App\Policies\UserPolicy;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/terms', [TermsController::class, 'show'])->name('terms.show');
+Route::get('/pay/{paymentLinkId}', [PaymentController::class, 'payForm'])->name('payments.payForm');
+Route::post('/pay/{paymentLinkId}', [PaymentController::class, 'pay'])->name('payments.pay');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
